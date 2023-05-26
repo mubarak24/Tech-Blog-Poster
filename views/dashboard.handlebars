@@ -1,0 +1,13 @@
+{{#extend "../layouts/main"}}
+{{#content "body"}}
+<h2>Dashboard</h2>
+<h3>Your Blog Posts</h3>
+{{#each posts}}
+<div>
+  <h4>{{this.title}}</h4>
+  <p>Created on {{this.createdAt}}</p>
+  <p>{{this.body}}</p>
+</div>
+{{/each}}
+{{/content}}
+{{/extend}}
