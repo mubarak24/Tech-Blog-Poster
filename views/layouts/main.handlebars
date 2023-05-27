@@ -11,7 +11,7 @@
 <body>
   <header>
     <h1>Tech Blog</h1>
-    {{#if loggedIn}}
+    {{#if logged_in}}
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
     <a href="/logout">Logout</a>
@@ -28,7 +28,7 @@
   </main>
 
   <footer>
-    {{#if loggedIn}}
+    {{#if logged_in}}
     <a href="/new">New Post</a>
     {{/if}}
   </footer>
@@ -36,7 +36,6 @@
   <!-- Include JavaScript files -->
   <script src="/js/login.js"></script>
   <script src="/js/logout.js"></script>
-  <script src="/js/delete.js"></script>
 </body>
 
 </html>
