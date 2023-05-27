@@ -1,1 +1,32 @@
 <h2>Welcome to the Tech Blog!</h2>
+
+<!-- Add additional content here -->
+<div>
+  <h3>Featured Blog Posts</h3>
+  {{#each featuredPosts}}
+    <div>
+      <h4>{{this.title}}</h4>
+      <p>Created by {{this.User.name}}</p>
+      <p>{{this.body}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<div>
+  <h3>Recent Articles</h3>
+  {{#each recentArticles}}
+    <div>
+      <h4>{{this.title}}</h4>
+      <p>Created by {{this.User.name}}</p>
+      <p>{{this.body}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<!-- Add a call-to-action section -->
+<div>
+  <h3>Start Writing Your Own Blog Posts!</h3>
+  <p>Join our community and share your knowledge and experiences with others. Sign up now and start publishing your own blog posts.</p>
+  <a href="/signup">Sign Up</a>
+</div>
+
