@@ -82,8 +82,10 @@ router.get('/login', (req, res) => {
 
 // Dashboard route
 router.get('/dashboard', withAuth, async (req, res) => {
+  console.log('dashbaord endpoint');
   try {
-    // Fetch the logged-in user's blogs
+    // Fetch the logged-in user's blogsd
+    console.log('blogs');
     const blogs = await Blog.findAll({
       where: { user_id: req.session.user_id },
       include: [{ model: User }],
