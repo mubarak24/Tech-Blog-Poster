@@ -37,13 +37,13 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/homepage');
       } else {
         alert('Sign up failed. Please try again.');
       }
     }
   };
   
-  document.querySelector('form.login-form').addEventListener('submit', loginFormHandler);
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   document.querySelector('form.signup-form').addEventListener('submit', signupFormHandler);
   
