@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -92,21 +92,31 @@ router.get('/signup', (req, res) => {
 
 // Dashboard route
 router.get('/dashboard', withAuth, async (req, res) => {
-  console.log('dashbaord endpoint');
   try {
-    // Fetch the logged-in user's blogsd
-    console.log('blogs');
+    // Fetch the logged-in user's blogs
     const blogs = await Blog.findAll({
       where: { user_id: req.session.user_id },
       include: [{ model: User }],
     });
 
     // Render the dashboard template with the blog data
-    res.render('dashboard', { blogs, logged_in: true });
+    res.render('dashboard', { posts: blogs, logged_in: req.session.logged_in });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get('/logout', (req, res) => {
+  // Clear the session and redirect to the homepage or any other desired page
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json(err);
+    } else {
+      res.redirect('/');
+    }
+  });
 });
 
 module.exports = router;
