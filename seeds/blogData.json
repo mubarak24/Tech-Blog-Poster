@@ -1,14 +1,6 @@
 [
     {
-        "title": "Blockchain Technology: Beyond Cryptocurrencies",
-        "content": "Blockchain, the underlying technology behind cryptocurrencies like Bitcoin, is finding applications beyond the financial sector. Its decentralized and immutable nature holds promise for transforming various industries, including supply chain management, identity verification, and data security."
-    },
-    {
-        "title": "The Rise of Artificial Intelligence in Healthcare",
-        "content": "Artificial intelligence (AI) is revolutionizing the healthcare industry. From diagnosis and treatment to patient care and administrative tasks, AI is making significant advancements in improving healthcare outcomes and efficiency."
-    },
-    {
-        "title": "Exploring the Potential of Quantum Computing",
-        "content": "Quantum computing has the potential to revolutionize computing power and solve complex problems that are currently intractable for classical computers. From cryptography to drug discovery and optimization, the field of quantum computing is advancing rapidly, promising new possibilities and breakthroughs."
+        "title": "Why MVC is so important",
+        "content": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View layer for design and the Controller layer for application logic."
     }
 ]
