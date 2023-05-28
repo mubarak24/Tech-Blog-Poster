@@ -106,10 +106,14 @@ router.get('/signup', (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Fetch the logged-in user's blogs
-    const blogs = await Blog.findAll({
+    const blogData = await Blog.findAll({
       where: { user_id: req.session.user_id },
-      include: [{ model: User }],
+      include: [
+        User
+      ],
     });
+    // Serialize data so the template can read it
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
     // Render the dashboard template with the blog data
     res.render('dashboard', { posts: blogs, logged_in: req.session.logged_in });

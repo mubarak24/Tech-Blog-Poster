@@ -3,7 +3,7 @@
 {{#each posts}}
 <div>
   <h4>{{this.title}}</h4>
-  <p>Created on {{this.createdAt}}</p>
-  <p>{{this.body}}</p>
+  <p>{{this.content}}</p>
+  <p>Created on {{format_date this.createdAt}}</p>
 </div>
 {{/each}}

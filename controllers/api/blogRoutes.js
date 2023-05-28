@@ -4,7 +4,7 @@ const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Create a new blog post
-router.post('/dashboard', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const { title, body } = req.body;
 
