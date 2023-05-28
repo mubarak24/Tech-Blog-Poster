@@ -87,7 +87,9 @@ router.get('/new', (req, res) => {
     return;
   }
 
-  res.render('new');
+  res.render('new', {
+    logged_in: req.session.logged_in,
+  });
 });
 
 router.get('/signup', (req, res) => {
