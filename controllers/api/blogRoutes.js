@@ -1,39 +1,49 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Create a new blog post
-router.post('/new', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
+    const { title, body } = req.body;
+
     const newBlog = await Blog.create({
-      ...req.body,
+      title,
+      body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newBlog);
+    res.status(201).json(newBlog);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json({ error: 'Failed to create a new blog post.' });
   }
 });
 
 // Update a blog post
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const blogData = await Blog.update(req.body, {
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
+    const { title, body } = req.body;
+    const { id } = req.params;
 
-    if (!blogData[0]) {
+    const updatedBlog = await Blog.update(
+      { title, body },
+      {
+        where: {
+          id,
+          user_id: req.session.user_id,
+        },
+      }
+    );
+
+    if (updatedBlog[0] === 0) {
       res.status(404).json({ message: 'No blog found with this id!' });
       return;
     }
 
-    res.status(200).json(blogData);
+    res.status(200).json({ message: 'Blog post updated successfully!' });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ error: 'Failed to update the blog post.' });
   }
 });
 
