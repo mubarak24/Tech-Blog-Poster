@@ -22,7 +22,7 @@ Please refer to the LICENSE in the repo.
 
 ## Link
 
-<!-- heroku -->
+https://tech-blog-poster.herokuapp.com/ 
 
 ## Screenshots
 
