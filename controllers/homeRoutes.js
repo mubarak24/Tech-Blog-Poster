@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all blogs and JOIN with user data
     const blogData = await Blog.findAll({
       include: [
         {
@@ -14,16 +13,13 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
     res.render('homepage', {
       blogs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -50,10 +46,8 @@ router.get('/blogs', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    // Find the logged-in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Project }],
@@ -71,7 +65,6 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
@@ -81,7 +74,6 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;
@@ -93,7 +85,6 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
@@ -102,20 +93,16 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-// Dashboard route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    // Fetch the logged-in user's blogs
     const blogData = await Blog.findAll({
       where: { user_id: req.session.user_id },
       include: [
         User
       ],
     });
-    // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    // Render the dashboard template with the blog data
     res.render('dashboard', { posts: blogs, logged_in: req.session.logged_in });
   } catch (err) {
     console.log(err);
@@ -124,10 +111,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  // Clear the session and redirect to the homepage or any other desired page
   req.session.destroy((err) => {
     if (err) {
-      console.log(err);
       res.status(500).json(err);
     } else {
       res.redirect('/');

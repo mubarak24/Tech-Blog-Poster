@@ -1,7 +1,7 @@
 <h2>Dashboard</h2>
 <h3>Your Blog Posts</h3>
 {{#each posts}}
-<div>
+<div class="post-card">
   <h4>{{this.title}}</h4>
   <p>{{this.content}}</p>
   <p>Created on {{format_date this.createdAt}}</p>

@@ -3,7 +3,7 @@ const router = express.Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Create a new blog post
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const { title, body } = req.body;
@@ -20,7 +20,6 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Update a blog post
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const { title, body } = req.body;

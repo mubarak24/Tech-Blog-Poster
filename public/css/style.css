@@ -1,0 +1,91 @@
+body {
+    background-color: beige;
+    color: rgba(33, 14, 14, 0.895);
+    font-family: Arial, sans-serif;
+}
+
+h1,
+h2 {
+    color: white;
+}
+
+h3,
+h4 {
+    color: rgba(33, 14, 14, 0.776);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header,
+footer {
+    background-color: rgba(33, 14, 14, 0.895);
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header a {
+    margin-right: 10px;
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+}
+
+main h2 {
+    margin-top: 0;
+}
+
+.post-card {
+    background-color: burlywood;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.post-card h4 {
+    margin-top: 0;
+}
+
+footer a {
+    margin-right: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid brown;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #8b4513;
+}
